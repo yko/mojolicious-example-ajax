@@ -3,11 +3,11 @@
 <script>
 
 $(function() {
-  // when user press the button
+  // when user press 'get' button
   $('#get_server_message').click(function(e) {
     e.preventDefault();
     // ask server for message, use helper to generate url by it's name
-    $.get('<%= url_for 'welcome message' %>',
+    $.get('<%= url_for('welcome message')->query('t' => time) %>',
         function (data) {
             // put message into the box
             $('#server-message').text(data).show();

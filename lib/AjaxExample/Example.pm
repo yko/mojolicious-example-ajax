@@ -23,16 +23,16 @@ sub welcome {
 
 =head2 welcome_message()
 
-This action will render just a piece of text, nothing more.
+This action will render piece of text from static file.
 Note, that render_text() prevents Mojolicious from render any templates.
 
 =cut
 
 sub welcome_message {
     my $c = shift;
-
-    $c->render_text(
-        'This is a simple message, delivered from serverside by AJAX'
-    );
+    
+    # Render message from public file
+    my $path = $c->render_static('server_message.html');
 }
+
 1;
