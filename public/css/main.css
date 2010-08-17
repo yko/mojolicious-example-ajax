@@ -22,7 +22,7 @@ div#server-message {
  display: none;
 }
 
-#get_server_message {
+#get_server_message, #edit_server_message {
  margin: 20px auto 20px auto;
  display: block;
  background: #70bbef;
@@ -34,3 +34,5 @@ div#server-message {
  font-weight: bold;
  font-size: 1em;
 }
+
+#edit_server_message { display: none; }

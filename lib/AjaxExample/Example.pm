@@ -35,4 +35,48 @@ sub welcome_message {
     my $path = $c->render_static('server_message.html');
 }
 
+=head2 update_welcome_message()
+
+This action will update server message in static file
+and say 'ok' if everything allright or render error message,
+is something wrong.
+
+=cut
+
+sub update_welcome_message {
+    my $c = shift;
+    
+    # Get your 'public' dir path
+    my $path = $c->app->static->root . '/server_message.html';
+
+    # Get user input
+    my $message = $c->param('new_message');
+
+    # Just to test error messages, force user to write something
+    if (length $message < 5) {
+        return $c->render_text(
+            "Message '$message' is too short. Write more than 5 characters!"
+        );
+    }
+
+    # Open file for writing;
+    open my $MSG, '>', $path;
+
+    # Render error message and exit, if we can not write
+    unless ($MSG) {
+        return $c->render_text(
+            "Uneable to open file 'server_message.html' for writing: $!"
+        );
+    }
+
+    # Save content
+    print $MSG $message;
+    close $MSG;
+
+    # Render confirmation
+    $c->render_text(
+        'ok'
+    );
+}
+
 1;
