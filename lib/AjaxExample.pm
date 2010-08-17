@@ -14,6 +14,12 @@ sub startup {
 
     # Default route, points to AjaxExample::Example::welcome() action
     $r->route('/')->to('example#welcome');
+
+    # Simple text message on demand. 
+    # See AjaxExample::Example::welcome_message for details
+    $r->route('/server-message')
+      ->to('example#welcome_message')
+      ->name('welcome message');
 }
 
 1;

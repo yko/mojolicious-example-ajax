@@ -1,9 +1,18 @@
 % layout 'default';
+
+<script>
+
+$(function() {
+    // ask server for message, use helper to generate url by it's name
+    $.get('<%= url_for 'welcome message' %>',
+        function (data) {
+            // put message into the box
+            $('#server-message').text(data);
+        }
+    );
+});
+
+</script>
+
 <h2><%= $message %></h2>
-This page was generated from the template
-"templates/example/welcome.html.ep" and the layout
-"templates/layouts/default.html.ep",
-<a href="<%== url_for %>">click here</a>
-to reload the page or
-<a href="/index.html">here</a>
-to move forward to a static page.
+<div id='server-message'> </div>

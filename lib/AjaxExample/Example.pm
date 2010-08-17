@@ -21,4 +21,18 @@ sub welcome {
     $c->render(message => 'Welcome to the Mojolicious Web Framework!');
 }
 
+=head2 welcome_message()
+
+This action will render just a piece of text, nothing more.
+Note, that render_text() prevents Mojolicious from render any templates.
+
+=cut
+
+sub welcome_message {
+    my $c = shift;
+
+    $c->render_text(
+        'This is a simple message, delivered from serverside by AJAX'
+    );
+}
 1;
