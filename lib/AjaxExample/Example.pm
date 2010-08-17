@@ -5,12 +5,20 @@ use warnings;
 
 use base 'Mojolicious::Controller';
 
-# This action will render a template
+=head1 Controller Methods
+
+=head2 welcome()
+
+Rendering template example/welcome.html.ep
+Before render, it sends 'message' into stash, so you can use it in template.
+
+=cut
+
 sub welcome {
-    my $self = shift;
+    my $c = shift;
 
     # Render template "example/welcome.html.ep" with message
-    $self->render(message => 'Welcome to the Mojolicious Web Framework!');
+    $c->render(message => 'Welcome to the Mojolicious Web Framework!');
 }
 
 1;

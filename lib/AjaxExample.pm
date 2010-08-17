@@ -12,7 +12,7 @@ sub startup {
     # Routes
     my $r = $self->routes;
 
-    # Default route
+    # Default route, points to AjaxExample::Example::welcome() action
     $r->route('/')->to('example#welcome');
 }
 
