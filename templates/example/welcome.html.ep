@@ -3,6 +3,9 @@
 <script>
 
 $(function() {
+  // when user press the button
+  $('#get_server_message').click(function(e) {
+    e.preventDefault();
     // ask server for message, use helper to generate url by it's name
     $.get('<%= url_for 'welcome message' %>',
         function (data) {
@@ -10,9 +13,14 @@ $(function() {
             $('#server-message').text(data).show();
         }
     );
+    $(this).hide();
+  });
 });
 
 </script>
 
 <h2><%= $message %></h2>
+
+<input type='button' id='get_server_message' value='Push me to get server message' />
+
 <div id='server-message'> </div>
