@@ -1,0 +1,15 @@
+Mjolicious AJAX demo.
+
+Demonstrates, howto make some AJAX stuff with Mojolicious.
+
+This demo built in git-history style. You can see, 
+how it was built step-by-step exploring git commits history 
+from beginning to end:
+
+http://github.com/yko/mojolicious-example-ajax/commits/master/
+
+RUN
+
+    script/ajax-example daemon
+
+    open http://localhost:3000/ in browser
