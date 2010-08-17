@@ -7,7 +7,7 @@ $(function() {
     $.get('<%= url_for 'welcome message' %>',
         function (data) {
             // put message into the box
-            $('#server-message').text(data);
+            $('#server-message').text(data).show();
         }
     );
 });
