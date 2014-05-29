@@ -24,7 +24,7 @@ sub welcome {
 =head2 welcome_message()
 
 This action will render piece of text from static file.
-Note, that render_text() prevents Mojolicious from render any templates.
+Note, that render() prevents Mojolicious from render any templates.
 
 =cut
 
@@ -47,15 +47,15 @@ sub update_welcome_message {
     my $c = shift;
     
     # Get your 'public' dir path
-    my $path = $c->app->static->root . '/server_message.html';
+    my $path = $c->app->static->file('server_message.html')->path;
 
     # Get user input
     my $message = $c->param('new_message');
 
     # Just to test error messages, force user to write something
     if (length $message < 5) {
-        return $c->render_text(
-            "Message '$message' is too short. Write more than 5 characters!"
+        return $c->render(
+            text => "Message '$message' is too short. Write more than 5 characters!"
         );
     }
 
@@ -64,8 +64,8 @@ sub update_welcome_message {
 
     # Render error message and exit, if we can not write
     unless ($MSG) {
-        return $c->render_text(
-            "Uneable to open file 'server_message.html' for writing: $!"
+        return $c->render(
+            text => "Uneable to open file 'server_message.html' for writing: $!"
         );
     }
 
@@ -74,8 +74,8 @@ sub update_welcome_message {
     close $MSG;
 
     # Render confirmation
-    $c->render_text(
-        'ok'
+    $c->render(
+        text => 'ok'
     );
 }
 

@@ -17,8 +17,5 @@ Please visit http://mojolicious.org for detailed installation instructions.
 
 EOF
 
-# Application
-$ENV{MOJO_APP} ||= 'AjaxExample';
-
 # Start commands
-Mojolicious::Commands->start;
+Mojolicious::Commands->start_app('AjaxExample');

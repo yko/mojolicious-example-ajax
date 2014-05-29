@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 
-use Test::More tests => 5;
+use Test::More tests => 4;
 use Test::Mojo;
 
 use_ok('AjaxExample');
 
 # Test
-my $t = Test::Mojo->new(app => 'AjaxExample');
-$t->get_ok('/')->status_is(200)->content_type_is('text/html')
+my $t = Test::Mojo->new('AjaxExample');
+$t->get_ok('/')->status_is(200)
   ->content_like(qr/Mojolicious Web Framework/i);
